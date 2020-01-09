@@ -1,0 +1,11 @@
+{
+  "name": "landing-page-2020",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "serve ./public"
+  },
+  "devDependencies": {
+    "serve": "^10.1.1"
+  }
+}
