@@ -20,4 +20,4 @@ jobs:
           APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
           CLI: gcloud
         with:
-          args: app deploy --version ${{ steps.get_version.outputs.VERSION }} --quiet --no-promote public/app.yaml
+          args: app deploy --version ${{ steps.get_version.outputs.VERSION }} --quiet public/app.yaml
