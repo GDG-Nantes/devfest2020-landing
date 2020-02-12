@@ -1,0 +1,20 @@
+name: deploy
+
+on:
+  push:
+    tags: 
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Livraison ${{ github.ref }}
+        uses: actions-hub/gcloud@master
+        env:
+          PROJECT_ID: ${{ secrets.GOOGLE_PROJECT_ID }}
+          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+          CLI: gcloud
+        with:
+          args: app deploy --version toto --quiet public/app.yaml
