@@ -6,13 +6,14 @@ on:
       - v*
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
       - uses: actions/checkout@v1
+
       - name: Livraison ${{ steps.get_version.outputs.VERSION }}
         uses: actions-hub/gcloud@master
         env:
@@ -21,3 +22,12 @@ jobs:
           CLI: gcloud
         with:
           args: app deploy --version ${{ steps.get_version.outputs.VERSION }} --quiet public/app.yaml
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2.0.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_TITLE: Déploiement réussi
+          SLACK_MESSAGE: Version ${{ steps.get_version.outputs.VERSION }}
+          SLACK_ICON: https://github.com/fluidicon.png
+          SLACK_USERNAME: Github Actions
