@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Livraison ${{ steps.get_version.outputs.VERSION }}
-        uses: actions-hub/gcloud@master
+        uses: actions-hub/gcloud@284.0.1
         env:
           PROJECT_ID: devfestnantes2020
           APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
