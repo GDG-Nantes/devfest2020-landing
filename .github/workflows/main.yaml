@@ -21,7 +21,7 @@ jobs:
           APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
           CLI: gcloud
         with:
-          args: app deploy --version ${{ steps.get_version.outputs.VERSION }} --quiet public/app.yaml
+          args: app deploy --version ${{ steps.get_version.outputs.VERSION }} --quiet public/app.yaml --no-promote
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2.0.0

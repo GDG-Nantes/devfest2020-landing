@@ -17,50 +17,51 @@ body {
 }
 
 body {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 100px auto 100px;
-  grid-template-areas: 'header''poster''footer';
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100%;
+  overflow-y: scroll;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f8f6d1+0,6b303e+100 */
-  background: #f8f6d1;
-  /* Old browsers */
-  background: -moz-linear-gradient(top,
-      #c3daea 0%,
-      #2d444c 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,
-      #c3daea 0%,
-      #2d444c 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,
-      #c3daea 0%,
-      #2d444c 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: #fcf8ed;
 }
 
 .header {
-  grid-area: header;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  color: #2d444c;
+}
+
+.header>span {
+  max-width: 800px;
+  width: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 20px;
 }
 
 .poster {
-  grid-area: poster;
-  background-color: white;
-  background: url('poster.jpg') no-repeat center center;
-  background-size: contain;
   height: 100%;
+  width: 100%;
+  max-height: 500px;
+}
+
+.poster>img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 
 .footer {
-  grid-area: footer;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #e4ad53;
+  color: #2d444c;
+  margin-top: 10px;
 }
 
 .footer>small {
@@ -80,5 +81,5 @@ a.btn-download {
 a.btn-footer {
   font-size: 1.2rem;
   text-decoration: underline;
-  color: #e4ad53;
+  color: #2d444c;
 }
